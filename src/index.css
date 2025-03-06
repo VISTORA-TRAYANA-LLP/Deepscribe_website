@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+}
+
+/* Mouse trail effect */
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-trail {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.2s, height 0.2s;
+}
+
+/* Background */
+.medical-background {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.gradient-overlay {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.01) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
+}
+
+/* Floating scribbles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 1px;
+  pointer-events: none;
+  animation: float-particle 15s infinite linear;
+  transform: rotate(var(--rotation));
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) rotate(var(--rotation));
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100px) rotate(calc(var(--rotation) + 360deg));
+    opacity: 0;
+  }
+}
+
+.header-gradient {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-gradient {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-highlight {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover,
+.glass-card-highlight:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.shadow-glow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 3D Lines Animation */
+.line-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.03), transparent);
+  height: 1px;
+  width: 100%;
+  animation: line-move 8s linear infinite;
+  transform: translateZ(0);
+}
+
+@keyframes line-move {
+  0% {
+    transform: translateX(-100%) translateZ(0) rotateX(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateZ(0) rotateX(45deg);
+  }
+}
+
+/* Loading animation */
+.loading-dots:after {
+  content: '.';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60% { content: '...'; }
+  80%, 100% { content: ''; }
+}
+
+/* Fade in animations */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Scribble animations */
+.scribble {
+  position: absolute;
+  opacity: 0.03;
+  pointer-events: none;
+  animation: float-scribble 30s infinite linear;
+}
+
+@keyframes float-scribble {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-50px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  .medical-background {
+    background-size: 24px 24px;
+  }
+  
+  .glass-card,
+  .glass-card-highlight {
+    border-width: 1px;
+    margin: 0.5rem;
+    padding: 1rem !important;
+  }
+
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 0.75rem;
+  }
+
+  .mobile-center {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .mobile-full {
+    width: 100% !important;
+  }
+}

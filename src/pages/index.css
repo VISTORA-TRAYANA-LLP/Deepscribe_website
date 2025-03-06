@@ -1,0 +1,11 @@
+.handwritten{
+    padding-right: 2px;
+}
+.dashboard-logo{
+    height: 30px;
+}
+.setting-seq{
+    display:flex;
+    justify-content: space-between;
+    text-align: center;
+}
